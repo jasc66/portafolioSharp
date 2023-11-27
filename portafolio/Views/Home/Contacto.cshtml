@@ -1,0 +1,55 @@
+﻿@{
+    ViewData["Title"] = "Contacto";
+}
+
+<h1>Formulario de Contacto</h1>
+
+<form asp-controller="Home" asp-action="Contacto" method="post" class="needs-validation" novalidate>
+    <div class="mb-3">
+        <label for="nombre" class="form-label">Nombre</label>
+        <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Nombre Completo" required>
+        <div class="invalid-feedback">
+            Por favor ingresa tu nombre.
+        </div>
+    </div>
+
+    <div class="mb-3">
+        <label for="email" class="form-label">Correo electrónico</label>
+        <input type="email" class="form-control" id="email" name="email" placeholder="email@ejemplo.com" required>
+        <div class="invalid-feedback">
+            Por favor ingresa un correo electrónico válido.
+        </div>
+    </div>
+
+    <div class="mb-3">
+        <label for="mensaje" class="form-label">Mensaje</label>
+        <textarea class="form-control" id="mensaje" name="mensaje" placeholder="Mensaje" rows="4" required></textarea>
+        <div class="invalid-feedback">
+            Por favor ingresa tu mensaje.
+        </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Enviar</button>
+</form>
+
+@section Scripts {
+    <script>// Ejemplo de validación de formulario con Bootstrap
+        (function () {
+            'use strict'
+
+            // Selecciona todos los formularios que necesitan validación de Bootstrap
+            var forms = document.querySelectorAll('.needs-validation')
+
+            // Itera sobre ellos y previene el envío si no son válidos
+            Array.from(forms).forEach(function (form) {
+                form.addEventListener('submit', function (event) {
+                    if (!form.checkValidity()) {
+                        event.preventDefault()
+                        event.stopPropagation()
+                    }
+
+                    form.classList.add('was-validated')
+                }, false)
+            })
+        })()</script>
+}
